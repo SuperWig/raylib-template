@@ -1,0 +1,33 @@
+name: CI
+
+on:
+  push:
+    branches: [ ci ]
+
+jobs:
+  build:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [macos-latest, macos-11, ubuntu-latest, windows-latest]
+    steps:
+      - uses: actions/checkout@v2
+      - name: Install raylib
+        shell: bash
+        run: |
+          if [ "$RUNNER_OS" == "Windows" ]; then
+            vcpkg install raylib
+          else
+            brew install raylib cmake
+          fi
+      - name: Configure
+        shell: bash
+        run: |
+          if [ "$RUNNER_OS" == "Windows" ]; then
+            cmake -B build -D "CMAKE_TOOLCHAIN_FILE=C:/vcpkg/scripts/buildsystems/vcpkg.cmake"
+          else
+            cmake -B build
+          fi
+      - name: build
+        run:  cmake --build build

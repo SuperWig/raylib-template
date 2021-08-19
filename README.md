@@ -44,7 +44,8 @@ You then just need VS Code to open the folder extracted previously. Once loaded 
 
 ### Raylib w/ MinGW Installer users
 
-If you have installed raylib to somewhere other than the default path `C:/raylib` you will need to edit the CMake cache variable `raylib_INSTALL_PATH` and reconfigure.
+If you have installed raylib to somewhere other than the default path `C:/raylib` you will need to edit the CMake cache variable `raylib_INSTALL_PATH` and reconfigure.  
+![image](https://user-images.githubusercontent.com/2692096/130100391-c178f256-e501-4a30-9efc-82757e520fba.png)
 
 ### vcpkg Users
 
